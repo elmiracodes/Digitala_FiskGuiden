@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Digitala_FiskGuiden.Models.Klass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+    <a class="navbar-brand" href="#">Digitala Fiskguiden</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <li>@Html.ActionLink("Hem", "Index", "Home")</li> &nbsp;&nbsp; &nbsp;&nbsp;
+            <li>@Html.ActionLink("Fiskguide", "Index", "FiskGuide")</li> &nbsp;&nbsp; &nbsp;&nbsp;
+            <li>@Html.ActionLink("Klasser", "Index", "Klasser")</li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Klassificering</h1>
+
+<p>
+    <a asp-action="Create">Lägg till</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FiskKlass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiskKlass)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.KlassId">Ändra</a> 
+                <a asp-action="Details" asp-route-id="@item.KlassId">Detaljer</a> 
+                <a asp-action="Delete" asp-route-id="@item.KlassId">Radera</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
